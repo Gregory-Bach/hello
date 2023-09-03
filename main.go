@@ -9,7 +9,17 @@ import (
 
 func main() {
 
-	hostname := welcome()
+	args := os.Args[1:]
+
+	hostname, _ := os.Hostname()
+
+	if len(args) == 0 {
+		welcome()
+	}
+
+	if len(args) > 0 && args[0] != "--todo" {
+		welcome()
+	}
 
 	todo.DisplayTodos(hostname)
 
@@ -18,13 +28,9 @@ func main() {
 	os.Exit(0)
 }
 
-func welcome() string {
+func welcome() {
 	fmt.Println("Hello Greg")
-	hostname, _ := os.Hostname()
-	fmt.Println("Hostname: ", hostname)
 	fmt.Println("")
-
-	return hostname
 }
 
 func goodbye() {

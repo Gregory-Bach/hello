@@ -42,7 +42,9 @@ func ReadTodos(url string) []string {
 	fileScanner.Split(bufio.ScanLines)
 	var fileTextLines []string
 	for fileScanner.Scan() {
-		fileTextLines = append(fileTextLines, removeHyphen(fileScanner.Text()))
+		if len(fileScanner.Text()) > 1 {
+			fileTextLines = append(fileTextLines, removeHyphen(fileScanner.Text()))
+		}
 	}
 	readFile.Close()
 
@@ -50,5 +52,9 @@ func ReadTodos(url string) []string {
 }
 
 func removeHyphen(todo string) string {
+	if todo[0:2] != "- " {
+		return fmt.Sprint("[ ] ", todo)
+	}
+
 	return todo[2:]
 }
