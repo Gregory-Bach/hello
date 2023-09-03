@@ -6,18 +6,33 @@ import (
 	"os"
 )
 
-func DisplayTodos() {
+func DisplayTodos(hostname string) {
 	fmt.Println("****************")
 	fmt.Println("***   TODO   ***")
 	fmt.Println("****************")
-	todos := ReadTodos()
+
+	fileUrl := ""
+
+	if hostname == "deathstar" {
+		fileUrl = "/mnt/c/Users/grego/Documents/my-notes/hello/todo.md"
+	} else if hostname == "millennium-falcon" {
+		fileUrl = "/Users/greg/Documents/my-notes/hello/todo.md"
+	} else {
+		fmt.Println("Unknown or no hostname: ", hostname)
+		fmt.Println("Please config correctly...")
+		os.Exit(2)
+	}
+
+	todos := ReadTodos(fileUrl)
 	for _, todo := range todos {
 		fmt.Println(todo)
 	}
 }
 
-func ReadTodos() []string {
-	readFile, err := os.Open("/Users/greg/Documents/my-notes/hello/todo.md")
+func ReadTodos(url string) []string {
+
+	readFile, err := os.Open(url)
+
 	if err != nil {
 		fmt.Println("Error opening file", err)
 		os.Exit(1)

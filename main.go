@@ -9,20 +9,22 @@ import (
 
 func main() {
 
-	welcome()
+	hostname := welcome()
 
-	todo.DisplayTodos()
+	todo.DisplayTodos(hostname)
 
 	goodbye()
 
 	os.Exit(0)
 }
 
-func welcome() {
+func welcome() string {
 	fmt.Println("Hello Greg")
 	hostname, _ := os.Hostname()
 	fmt.Println("Hostname: ", hostname)
 	fmt.Println("")
+
+	return hostname
 }
 
 func goodbye() {
