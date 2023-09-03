@@ -15,7 +15,7 @@ func DisplayTodos(hostname string) {
 
 	if hostname == "deathstar" {
 		fileUrl = "/mnt/c/Users/grego/Documents/my-notes/hello/todo.md"
-	} else if hostname == "millennium-falcon" {
+	} else if hostname == "Gregorys-Air" {
 		fileUrl = "/Users/greg/Documents/my-notes/hello/todo.md"
 	} else {
 		fmt.Println("Unknown or no hostname: ", hostname)
