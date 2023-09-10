@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/Gregory-Bach/hello/gitscripts"
 	"github.com/Gregory-Bach/hello/todo"
 )
 
@@ -22,6 +23,8 @@ func main() {
 	}
 
 	todo.DisplayTodos(hostname)
+
+	gitscripts.GitUpdate(hostname)
 
 	goodbye()
 

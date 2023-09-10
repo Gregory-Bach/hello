@@ -7,6 +7,8 @@ import (
 )
 
 func DisplayTodos(hostname string) {
+
+	fmt.Println("")
 	fmt.Println("****************")
 	fmt.Println("***   TODO   ***")
 	fmt.Println("****************")
